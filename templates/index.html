@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        .chat-container {
+            width: 600px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+        }
+        h1 {
+            text-align: center;
+        }
+        .chat-box {
+            height: 400px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+
+        .user {
+            text-align: right;
+            margin: 10px;
+        }
+
+        .bot {
+            text-align: left;
+            margin: 10px;
+        }
+
+        .user span {
+            background: #007bff;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        .bot span {
+            background: #e9ecef;
+            padding: 8px 12px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+        }
+
+        button {
+            padding: 10px 15px;
+        }
+
+        .clear-btn {
+            margin-top: 10px;
+            text-decoration: none;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="chat-container">
+    <h1>AI Chatbot 🤖</h1>
+
+    <div class="chat-box">
+
+        {% for chat in chat_history %}
+
+            <div class="user">
+                <span>You: {{ chat.user }}</span>
+            </div>
+
+            <div class="bot">
+                <span>Bot: {{ chat.bot }}</span>
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+    <form method="POST">
+        <input type="text" name="message" placeholder="Type your message..." required>
+        <button type="submit">Send</button>
+    </form>
+
+    <a href="/clear" class="clear-btn">
+        Clear Chat
+    </a>
+
+</div>
+
+</body>
+</html>
